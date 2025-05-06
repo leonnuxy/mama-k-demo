@@ -55,6 +55,13 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className={styles.quote}>{testimonial.quote}</p>
+              <div className={styles.cardFooter}>
+                <span className={styles.testimonialDate}>May 2025</span>
+                <span className={styles.verifiedTag}>
+                  <i className="fas fa-check-circle" style={{color: 'var(--teal-accent)', marginRight: '0.25rem'}}></i>
+                  Verified Order
+                </span>
+              </div>
             </div>
           ))}
         </div>
