@@ -187,7 +187,7 @@ export default function Menu({ addToCart }) {
 						Our Menu
 					</h2>
 					<p className={styles.sectionSubtitle}>
-						Discover our selection of authentic West African dishes, prepared
+						Discover our selection of authentic Nigerian dishes, prepared
 						with love and tradition.
 					</p>
 				</div>

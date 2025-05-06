@@ -1,87 +1,311 @@
 /* ---------- global styles ---------- */
 :root {
+  /* Color Variables */
   --primary-red-accent: #d92f2a;
   --teal-accent: #17938a;
-  /* Translucent teal for focus rings or subtle backgrounds */
+  --teal-accent-dark: #117a70;
+  --teal-accent-light: #1eab9f;
   --teal-accent-translucent: rgba(23, 147, 138, 0.3);
-
-
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Neutral Colors */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Typography */
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, 
+                      "Helvetica Neue", Arial, sans-serif;
+  --font-family-heading: var(--font-family-base);
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  
+  /* Box Shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Base Font settings */
+  font-family: var(--font-family-base);
   line-height: 1.5;
   font-weight: 400;
-
-  /* color-scheme: light dark; /* Assuming a light theme focus for now */
-  /* color: rgba(255, 255, 255, 0.87); /* Default dark mode text color, not needed for light theme */
-  /* background-color: #242424; /* Default dark mode bg, not needed for light theme */
-
+  
+  /* Responsive Text Size */
+  font-size: 16px;
+  
+  /* Text Rendering */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; /* Added for consistency */
+  -webkit-text-size-adjust: 100%;
+  
+  /* Transition Duration */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+  
+  /* Transition Timing */
+  --transition-ease: ease;
+  --transition-ease-in-out: ease-in-out;
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Arial", sans-serif; /* Using Inter as a modern sans-serif option */
-  background-color: #ffffff; /* Standard white background */
-  color: #213547; /* Dark text color for readability */
+  font-family: var(--font-family-base);
+  background-color: #ffffff;
+  color: var(--gray-800);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
 
 #root {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
+/* Reset some browser defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, picture, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Typography */
 a {
   font-weight: 500;
-  color: var(--teal-accent); /* Use teal accent for links */
+  color: var(--teal-accent);
   text-decoration: inherit;
-  transition: color 0.2s ease-in-out;
+  transition: color var(--transition-fast) var(--transition-ease);
 }
+
 a:hover {
-  color: #117a70; /* Darker teal accent for hover */
+  color: var(--teal-accent-dark);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 0.5em; /* Consistent bottom margin for headings */
-  font-weight: 700; /* Bolder headings by default */
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* Responsive headings */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
 }
 
 p {
-  /* color: rgb(107, 114, 128); /* Default gray, can be overridden by components */
-  /* font-size: 15px; /* Let components define this or use relative units */
-  margin-bottom: 1rem; /* Consistent paragraph bottom margin */
+  margin-bottom: 1rem;
   margin-top: 0;
-  line-height: 1.6; /* Improved readability for paragraphs */
+  line-height: 1.6;
+  color: var(--gray-700);
 }
 
-/* Basic button reset/styling - can be expanded or overridden by modules */
+/* Basic button reset/styling */
 button {
-  border-radius: 0.5rem; /* rounded-lg */
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s;
+  transition: all var(--transition-normal) var(--transition-ease);
+  background-color: transparent;
 }
 
-/* Removing generic .card styles as components will have their own card-like structures */
+/* Focus styles for better accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--teal-accent-translucent);
+  outline-offset: 2px;
+}
 
-/* Removing prefers-color-scheme: light specific overrides as we are focusing on a light theme by default.
-   Dark theme can be added later if required. */
+/* Remove focus outline for mouse users, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
 
-/* Ensure box-sizing is consistent */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Mobile tap target sizing */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px; /* Recommended minimum touch target size */
+  }
+  
+  button {
+    padding: 0.6em 1em;
+  }
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* -------------------------------- */
+/* Responsive Utility Classes       */
+/* -------------------------------- */
+
+/* Hide on specific breakpoints */
+.hide-on-mobile {
+  display: block;
+}
+
+.show-on-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .show-on-mobile {
+    display: block !important;
+  }
+}
+
+/* Text alignment responsive classes */
+.text-center-mobile {
+  text-align: inherit;
+}
+
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center !important;
+  }
+}
+
+/* Spacing adjustments for mobile */
+@media (max-width: 768px) {
+  .no-margin-mobile {
+    margin: 0 !important;
+  }
+  
+  .no-padding-mobile {
+    padding: 0 !important;
+  }
+  
+  .full-width-mobile {
+    width: 100% !important;
+  }
+}
+
+/* Animation helper class */
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

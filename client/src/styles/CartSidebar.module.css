@@ -1,8 +1,4 @@
 /* CartSidebar component styles */
-:root {
-  --primary-red-accent: #d92f2a;
-  --teal-accent: #17938a;
-}
 
 .sidebar {
   position: fixed;

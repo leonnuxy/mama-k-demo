@@ -5,7 +5,7 @@ export default function HowItWorks() {
     {
       id: 1,
       title: "Browse Our Menu",
-      description: "Explore our variety of authentic West African dishes prepared with traditional recipes and fresh ingredients.",
+      description: "Explore our variety of authentic Nigerian dishes prepared with traditional recipes and fresh ingredients.",
       icon: "fa-utensils"
     },
     {
@@ -23,7 +23,7 @@ export default function HowItWorks() {
     {
       id: 4,
       title: "Enjoy Your Meal",
-      description: "Receive your freshly prepared West African meal, ready to heat and enjoy in the comfort of your home.",
+      description: "Receive your freshly prepared Nigerian meal, ready to heat and enjoy in the comfort of your home.",
       icon: "fa-smile-beam" // Changed from fa-face-smile for better visual
     }
   ];
@@ -34,7 +34,7 @@ export default function HowItWorks() {
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>How It Works</h2>
           <p className={styles.sectionSubtitle}>
-            Bringing authentic West African flavors to your doorstep in four simple steps.
+            Bringing authentic Nigerian flavors to your doorstep in four simple steps.
           </p>
         </div>
         

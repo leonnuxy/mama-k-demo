@@ -22,7 +22,7 @@ export default function Footer() {
               </h3>
             </div>
             <p className={styles.brandDescription}>
-              Authentic West African cuisine delivered to your doorstep. Made with love, traditional recipes, and the freshest ingredients.
+              Authentic Nigerian cuisine delivered to your doorstep. Made with love, traditional recipes, and the freshest ingredients.
             </p>
             <div className={styles.socialLinksContainer}>
               <a href="https://www.facebook.com/mamakayss/" className={styles.socialLink} aria-label="Facebook">

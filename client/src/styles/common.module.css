@@ -1,0 +1,281 @@
+/* Common reusable styles for components */
+
+/* Container styles */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section styles */
+.section {
+  padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Heading styles */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.5rem;
+  width: 60px;
+  height: 3px;
+  background: var(--teal-accent);
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 1.5rem auto 0;
+  color: #4b5563;
+  max-width: 800px;
+}
+
+@media (max-width: 640px) {
+  .sectionHeader {
+    margin-bottom: 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.875rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Flex utilities */
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+/* Spacing utilities */
+.mt1 { margin-top: 0.25rem; }
+.mt2 { margin-top: 0.5rem; }
+.mt4 { margin-top: 1rem; }
+.mt6 { margin-top: 1.5rem; }
+.mt8 { margin-top: 2rem; }
+
+.mb1 { margin-bottom: 0.25rem; }
+.mb2 { margin-bottom: 0.5rem; }
+.mb4 { margin-bottom: 1rem; }
+.mb6 { margin-bottom: 1.5rem; }
+.mb8 { margin-bottom: 2rem; }
+
+/* Grid layouts */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.gridCols1 { grid-template-columns: repeat(1, 1fr); }
+.gridCols2 { grid-template-columns: repeat(2, 1fr); }
+.gridCols3 { grid-template-columns: repeat(3, 1fr); }
+.gridCols4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .lgGridCols2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .mdGridCols2 { grid-template-columns: repeat(2, 1fr); }
+  .mdGridCols1 { grid-template-columns: repeat(1, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .smGridCols1 { grid-template-columns: repeat(1, 1fr); }
+}
+
+/* Button styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+/* Button variants */
+.buttonPrimary {
+  background-color: var(--teal-accent);
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background-color: var(--teal-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonSecondary {
+  background-color: var(--primary-red-accent);
+  color: white;
+}
+
+.buttonSecondary:hover {
+  background-color: #b02120;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonOutline {
+  background-color: transparent;
+  border: 1px solid var(--teal-accent);
+  color: var(--teal-accent);
+}
+
+.buttonOutline:hover {
+  background-color: var(--teal-accent-translucent);
+  transform: translateY(-2px);
+}
+
+/* Button sizes */
+.buttonSm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.buttonLg {
+  padding: 0.875rem 1.75rem;
+  font-size: 1.125rem;
+}
+
+/* Button states */
+.buttonFullWidth {
+  width: 100%;
+}
+
+.buttonDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.buttonDisabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+  .button {
+    padding: 0.625rem 1.25rem;
+  }
+  
+  .buttonLg {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Card styles */
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation classes */
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive image */
+.responsiveImage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hide element only visually but keep available for screen readers */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

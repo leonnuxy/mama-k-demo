@@ -8,10 +8,10 @@ export default function Hero() {
       <div className={styles.contentContainer}>
         <div className={styles.textContentWrapper}>
           <h1 className={styles.title}>
-            Experience Authentic <span className={styles.titleHighlight}>West African</span> Cuisine
+            Experience Authentic <span className={styles.nigerianFlagText}>Nigerian</span> Cuisine
           </h1>
           <p className={styles.subtitle}>
-            Delicious <span className={styles.nigerianFlagText}>Nigerian</span> homemade meals for your delight.
+            Delicious homemade meals for your delight.
           </p>
           <div className={styles.buttonGroup}>
             <a 
