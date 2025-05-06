@@ -1,8 +1,4 @@
 /* Footer component styles */
-:root {
-  --primary-red-accent: #d92f2a;
-  --teal-accent: #17938a;
-}
 .footer {
   background: linear-gradient(to bottom, #1f2937, #111827); /* gradient bg from gray-800 to gray-900 */
   color: #d1d5db; /* text-gray-300 - Adjusted for better contrast on dark bg */

@@ -51,7 +51,7 @@ export default function CartSidebar({ isOpen, close, cart, updateQuantity, remov
                       className={styles.itemImage}
                     />
                     <div className={styles.itemDetails}>
-                      <div className="flex justify-between">
+                      <div className={styles.itemHeader}>
                         <h3 className={styles.itemName}>{item.name}</h3>
                         <button 
                           onClick={() => removeFromCart(item.id)}
@@ -75,7 +75,7 @@ export default function CartSidebar({ isOpen, close, cart, updateQuantity, remov
                         >
                           <i className="fas fa-plus"></i>
                         </button>
-                        <div className="ml-auto font-medium">
+                        <div className={styles.itemTotal}>
                           ${(item.price * item.quantity).toFixed(2)}
                         </div>
                       </div>
