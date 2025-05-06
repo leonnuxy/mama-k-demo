@@ -1,6 +1,23 @@
 import { useState } from 'react';
 import styles from '../styles/Menu.module.css';
 
+// Import images
+import jollofRiceImg from '../assets/jollof_rice.jpg';
+import egusiSoupImg from '../assets/egusi_soup.png';
+import afangSoupImg from '../assets/afang_soup.jpg';
+import beansPorridgeImg from '../assets/beans_porridge.jpg';
+import moiMoiImg from '../assets/moi_moi.jpg';
+import edikaikongImg from '../assets/edikainkon_soup.jpg';
+import friedRiceImg from '../assets/fried_rice.jpg';
+import ogbonoSoupImg from '../assets/ogbono_soup.png';
+import fishStewImg from '../assets/fish_stew.jpg';
+import pepperSoupImg from '../assets/pepper_soup.jpg';
+import pepperedChickenImg from '../assets/peppered_chicken.jpg';
+import suyaSkewersImg from '../assets/suya_skewers.jpg';
+import goatMeatImg from '../assets/goat_meat.jpg';
+import pepperedGoatMeatImg from '../assets/peppered_goat_meat.webp';
+import ofadaStewImg from '../assets/ofada_stew.jpg';
+
 // Menu data
 const menuItems = [
 	{
@@ -9,62 +26,144 @@ const menuItems = [
 		description:
 			'Fragrant rice cooked in tomato sauce with spices, served with tender chicken',
 		price: 15.99,
-		image: 'https://via.placeholder.com/300x200?text=Jollof+Rice',
-		category: 'main',
+		image: jollofRiceImg,
+		category: 'rice',
 	},
 	{
 		id: 2,
-		name: 'Egusi Soup with Fufu',
+		name: 'Egusi Soup',
 		description:
-			'Melon seed soup with spinach, served with pounded yam fufu',
+			'Melon seed soup with spinach',
 		price: 16.99,
-		image: 'https://via.placeholder.com/300x200?text=Egusi+Soup',
-		category: 'main',
+		image: egusiSoupImg,
+		category: 'soup',
 	},
 	{
 		id: 3,
-		name: 'Suya Skewers',
-		description: 'Grilled beef skewers marinated in spicy peanut sauce',
+		name: 'Afang Soup',
+		description: 'Afang soup with goat meat and vegetables',
 		price: 12.99,
-		image: 'https://via.placeholder.com/300x200?text=Suya+Skewers',
-		category: 'appetizer',
+		image: afangSoupImg,
+		category: 'soup',
 	},
 	{
 		id: 4,
-		name: 'Puff Puff',
+		name: 'Beans Porridge',
 		description:
-			'Sweet, deep-fried dough balls, a popular West African snack',
+			'Beans porridge with spices and palm oil',
 		price: 7.99,
-		image: 'https://via.placeholder.com/300x200?text=Puff+Puff',
-		category: 'appetizer',
+		image: beansPorridgeImg,
+		category: 'main',
 	},
 	{
 		id: 5,
 		name: 'Moin Moin',
 		description:
-			'S steamed bean pudding with bell peppers, onions, and spices',
+			'Steamed bean pudding with bell peppers, onions, and spices',
 		price: 8.99,
-		image: 'https://via.placeholder.com/300x200?text=Moin+Moin',
+		image: moiMoiImg,
 		category: 'side',
 	},
-	{
-		id: 6,
-		name: 'Zobo Drink',
-		description:
-			'Sweet-tart hibiscus drink infused with ginger and pineapple',
-		price: 4.99,
-		image: 'https://via.placeholder.com/300x200?text=Zobo+Drink',
-		category: 'beverage',
-	},
+    {
+        id: 6,
+        name: 'Edikang Ikong',
+        description:
+            'Vegetable soup with assorted meats and spices',
+        price: 14.99,
+        image: edikaikongImg,
+        category: 'soup',
+    },
+    {
+        id: 7,
+        name: 'Fried Rice',
+        description:
+            'Stir-fried rice with vegetables and your choice of protein',
+        price: 10.99,
+        image: friedRiceImg,
+        category: 'rice',
+    },
+    {
+        id: 8,
+        name: 'Ogbono Soup',
+        description:
+            'Ground ogbono seeds soup with assorted meats and spices',
+        price: 13.99,
+        image: ogbonoSoupImg,
+        category: 'soup',
+    },
+    {
+        id: 9,
+        name: 'Fish Stew',
+        description:
+            'Spicy fish stew with assorted vegetables and spices',
+        price: 11.99,
+        image: fishStewImg,
+        category: 'soup',
+    },
+    {
+        id: 10,
+        name: 'Suya Skewers',
+        description:
+            'Grilled spicy beef skewers served with onions and tomatoes',
+        price: 9.99,
+        image: suyaSkewersImg,
+        category: 'appetizer',
+    },
+    {
+        id: 11,
+        name: 'Goat Meat',
+        description:
+            'Tender goat meat cooked with spices and herbs',
+        price: 12.99,
+        image: goatMeatImg,
+        category: 'meat',
+    },
+    {
+        id: 12,
+        name: 'Peppered Goat Meat',
+        description:
+            'Spicy goat meat cooked with peppers and herbs',
+        price: 13.99,
+        image: pepperedGoatMeatImg,
+        category: 'meat',
+    },
+    {
+        id: 13,
+        name: 'Ofada Stew',
+        description:
+            'Traditional Nigerian stew made with green peppers and assorted meats',
+        price: 14.99,
+        image: ofadaStewImg,
+        category: 'soup',
+    },
+    {
+        id: 14,
+        name: 'Peppered Chicken',
+        description:
+            'Spicy chicken cooked with peppers and herbs',
+        price: 12.99,
+        image: pepperedChickenImg,
+        category: 'meat',
+    },
+    {
+        id: 15,
+        name: 'Pepper Soup',
+        description:
+            'Spicy soup made with assorted meats and spices',
+        price: 10.99,
+        image: pepperSoupImg,
+        category: 'soup',
+    },
 ];
 
 // Categories
 const categories = [
 	{ id: 'all', name: 'All Items' },
-	{ id: 'main', name: 'Main Dishes' },
+	{ id: 'soup', name: 'Soups & Stews' },
+	{ id: 'rice', name: 'Rice Dishes' },
 	{ id: 'appetizer', name: 'Appetizers' },
 	{ id: 'side', name: 'Side Dishes' },
-	{ id: 'beverage', name: 'Beverages' },
+	{ id: 'meat', name: 'Meat Dishes' },
 ];
 
 export default function Menu({ addToCart }) {
@@ -81,42 +180,40 @@ export default function Menu({ addToCart }) {
 	});
 
 	return (
-		<section id="menu" className="py-16 bg-gray-50">
-			<div className="container mx-auto px-4">
-				<div className="text-center mb-12">
-					<h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+		<section id="menu" className={styles.menuSection}>
+			<div className={styles.container}>
+				<div className={styles.sectionHeader}>
+					<h2 className={styles.sectionTitle}>
 						Our Menu
 					</h2>
-					<p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+					<p className={styles.sectionSubtitle}>
 						Discover our selection of authentic West African dishes, prepared
 						with love and tradition.
 					</p>
 				</div>
 
 				{/* Search & Filter */}
-				<div className="mb-8 flex flex-col md:flex-row gap-4 md:items-center justify-between">
-					<div className="relative">
+				<div className={styles.searchFilterControls}>
+					<div className={styles.searchInputWrapper}>
 						<input
 							type="text"
 							placeholder="Search menu..."
 							value={searchTerm}
 							onChange={e => setSearchTerm(e.target.value)}
-							className="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+							className={styles.searchInput}
 						/>
-						<span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+						<span className={styles.searchIcon}>
 							<i className="fas fa-search"></i>
 						</span>
 					</div>
 
-					<div className="flex flex-wrap gap-2">
+					<div className={styles.categoryButtonsContainer}>
 						{categories.map(category => (
 							<button
 								key={category.id}
 								onClick={() => setActiveCategory(category.id)}
-								className={`px-4 py-2 rounded-full text-sm font-medium ${
-									activeCategory === category.id
-										? 'bg-orange-500 text-white'
-										: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+								className={`${styles.categoryButton} ${
+									activeCategory === category.id ? styles.categoryButtonActive : ''
 								}`}
 							>
 								{category.name}
@@ -126,42 +223,42 @@ export default function Menu({ addToCart }) {
 				</div>
 
 				{/* Menu Items */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div className={styles.menuGrid}>
 					{filteredItems.length > 0 ? (
 						filteredItems.map(item => (
 							<div
 								key={item.id}
-								className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+								className={styles.menuItem}
 							>
 								<img
 									src={item.image}
 									alt={item.name}
-									className="w-full h-48 object-cover"
+									className={styles.menuImage}
 								/>
-								<div className="p-6">
-									<div className="flex justify-between items-start mb-2">
-										<h3 className="text-xl font-semibold text-gray-900">
+								<div className={styles.menuContent}>
+									<div className={styles.menuItemHeader}>
+										<h3 className={styles.menuItemTitle}>
 											{item.name}
 										</h3>
-										<span className="text-lg font-bold text-orange-500">
+										<span className={styles.menuItemPrice}>
 											${item.price.toFixed(2)}
 										</span>
 									</div>
-									<p className="text-gray-600 mb-4">
+									<p className={styles.menuItemDescription}>
 										{item.description}
 									</p>
 									<button
 										onClick={() => addToCart(item)}
-										className="w-full py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center justify-center transition-colors"
+										className={styles.addButton}
 									>
-										<i className="fas fa-plus mr-2"></i> Add to Cart
+										<i className={`fas fa-utensils ${styles.addButtonIcon}`}></i> Add to Cart
 									</button>
 								</div>
 							</div>
 						))
 					) : (
-						<div className="col-span-full text-center py-8">
-							<p className="text-gray-500 text-lg">
+						<div className={styles.noItemsMessageContainer}>
+							<p className={styles.noItemsMessageText}>
 								No items found. Try a different search term or category.
 							</p>
 						</div>

@@ -49,6 +49,7 @@
   display: none; /* hidden */
   flex-grow: 1; /* Allow nav to take available space for centering */
   justify-content: center; /* Center nav items */
+  margin-right: 150px;
 }
 
 @media (min-width: 768px) { /* md:flex */

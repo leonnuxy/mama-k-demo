@@ -16,53 +16,55 @@ export default function HowItWorks() {
     },
     {
       id: 3,
-      title: "Schedule Delivery",
-      description: "Choose a delivery time that works for you, from same-day delivery to planning meals for the week.",
-      icon: "fa-calendar"
+      title: "Schedule Delivery/Pickup",
+      description: "Choose a convenient time for delivery or pickup. We ensure your meals are prepared fresh and on time.",
+      icon: "fa-calendar-alt" // Changed from fa-calendar for better visual
     },
     {
       id: 4,
       title: "Enjoy Your Meal",
       description: "Receive your freshly prepared West African meal, ready to heat and enjoy in the comfort of your home.",
-      icon: "fa-face-smile"
+      icon: "fa-smile-beam" // Changed from fa-face-smile for better visual
     }
   ];
   
   return (
-    <section id="how-it-works" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">How It Works</h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+    <section id="how-it-works" className={styles.howItWorksSection}>
+      <div className={styles.container}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>How It Works</h2>
+          <p className={styles.sectionSubtitle}>
             Bringing authentic West African flavors to your doorstep in four simple steps.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map(step => (
-            <div key={step.id} className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-2xl mx-auto mb-4">
+        <div className={styles.stepsGrid}>
+          {steps.map((step, index) => (
+            <div key={step.id} className={styles.stepCard}>
+              <div className={styles.stepIconWrapper}>
                 <i className={`fas ${step.icon}`}></i>
               </div>
-              <div className="relative mb-6 flex justify-center">
-                <span className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+              <div className={styles.stepNumberContainer}>
+                <span className={styles.stepNumber}>
                   {step.id}
                 </span>
-                {step.id < steps.length && (
-                  <div className="hidden lg:block absolute top-4 left-full w-full h-0.5 bg-orange-300" style={{ width: 'calc(100% - 1rem)' }}></div>
+                {/* Render connector line only for lg screens and not for the last item */}
+                {index < steps.length - 1 && (
+                  <div className={styles.stepConnector}></div>
                 )}
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">{step.title}</h3>
-              <p className="text-gray-600">{step.description}</p>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepDescription}>{step.description}</p>
             </div>
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <div className={styles.ctaButtonContainer}>
           <a 
             href="#menu" 
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+            className={styles.ctaButton}
           >
+            <i className="fas fa-utensils" style={{marginRight: '0.5rem'}}></i>
             Order Now
           </a>
         </div>

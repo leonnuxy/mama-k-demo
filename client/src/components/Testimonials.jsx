@@ -26,35 +26,35 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">What Our Customers Say</h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+    <section id="testimonials" className={styles.testimonialsSection}>
+      <div className={styles.container}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>What Our Customers Say</h2>
+          <p className={styles.sectionSubtitle}>
             Don't just take our word for it - hear from our satisfied customers about their experiences with Mama K's Kitchen.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={styles.testimonialsGrid}>
           {testimonials.map(testimonial => (
-            <div key={testimonial.id} className="bg-white p-6 rounded-xl shadow-md">
-              <div className="flex items-center mb-4">
+            <div key={testimonial.id} className={styles.testimonialCard}>
+              <div className={styles.cardHeader}>
                 <img 
                   src={testimonial.avatar} 
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4" 
+                  className={styles.avatar} 
                 />
-                <div>
-                  <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                <div> 
+                  <h4 className={styles.authorName}>{testimonial.name}</h4>
+                  <p className={styles.authorRole}>{testimonial.role}</p>
                 </div>
               </div>
-              <div className="mb-2 text-orange-500">
+              <div className={styles.starsContainer}>
                 {[...Array(5)].map((_, i) => (
                   <i key={i} className="fas fa-star"></i>
                 ))}
               </div>
-              <p className="text-gray-700">{testimonial.quote}</p>
+              <p className={styles.quote}>{testimonial.quote}</p>
             </div>
           ))}
         </div>
