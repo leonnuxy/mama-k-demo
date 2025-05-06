@@ -1,0 +1,195 @@
+/* Header component styles */
+.headerBase {
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoIcon {
+  width: 2.5rem; /* Maintain size or adjust as needed */
+  height: 2.5rem; /* Maintain size or adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  border-radius: 0; /* Or keep rounded if desired for the image frame */
+}
+
+.logoImage {
+  height: 100%; /* Make image fill the .logoIcon container */
+  width: auto;   /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the whole image is visible */
+}
+
+.brandName {
+  font-weight: 900;
+  color: var(--primary-red-accent); /* Use Primary Red Accent */
+  font-size: 1.25rem;
+  margin-bottom: unset;
+}
+
+.brandHighlight {
+  color: var(--teal-accent); /* Use Teal Accent */
+}
+
+.navLinkIcon {
+  margin-right: 0.5rem; /* space between icon and text */
+  width: 1.25em; /* ensure consistent icon width for alignment */
+  text-align: center;
+}
+
+.nav {
+  display: none; /* hidden */
+  flex-grow: 1; /* Allow nav to take available space for centering */
+  justify-content: center; /* Center nav items */
+}
+
+@media (min-width: 768px) { /* md:flex */
+  .nav {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  .nav > :not([hidden]) ~ :not([hidden]) { /* space-x-6 */
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+}
+
+@media (min-width: 1024px) { /* lg:space-x-8 */
+  .nav > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2rem * var(--tw-space-x-reverse));
+    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+}
+
+.navLink {
+  color: #374151; /* gray-700 */
+  transition: color 0.2s;
+  display: flex; /* For aligning icon and text */
+  align-items: center; /* Vertically align icon and text */
+}
+
+.navLink:hover {
+  color: var(--teal-accent); /* Use Teal Accent */
+}
+
+.cartButton {
+  position: relative;
+  padding: 0.5rem; /* p-2 */
+  color: #374151; /* gray-700, same as navLink */
+  transition: color 0.2s;
+  background-color: transparent; /* Ensure no default button background */
+  border: none; /* Ensure no default button border */
+  cursor: pointer;
+}
+
+.cartButton:hover {
+  color: var(--teal-accent); /* Use Teal Accent */
+}
+
+.cartIcon {
+  font-size: 1.25rem; /* text-xl */
+  display: block; /* Helps with consistent rendering */
+  color: var(--teal-accent); /* Use Teal Accent for the cart icon */
+}
+
+.cartBadge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  background-color: var(--primary-red-accent); /* Use Primary Red Accent */
+  color: white;
+  font-size: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem; /* py-3 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.controlsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mobileMenuButton {
+  margin-left: 1rem; /* ml-4 */
+}
+
+@media (min-width: 768px) { /* md:hidden */
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+/* Mobile menu styles */
+.mobileMenu {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  display: flex; /* Enable flex for centering items */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.mobileMenuItem {
+  display: flex; /* For aligning icon and text */
+  align-items: center; /* Vertically align icon and text */
+  padding: 0.75rem 0; /* Increased padding for better touch targets */
+  color: #374151; /* gray-700 */
+  width: 100%; /* Make items take full width for centering text inside */
+  justify-content: center; /* Center content (icon + text) within the item */
+}
+
+.mobileMenuItem:hover {
+  color: var(--teal-accent); /* Use Teal Accent */
+}

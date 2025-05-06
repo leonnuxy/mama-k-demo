@@ -1,0 +1,131 @@
+/* Footer component styles */
+.footer {
+  background-color: #1f2937; /* gray-800 */
+  color: #e5e7eb; /* gray-200 */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brandLogo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #38A169; /* plant-green */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 0.75rem;
+}
+
+.brandName {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.brandHighlight {
+  color: #38A169; /* plant-green */
+}
+
+.description {
+  margin-top: 1rem;
+  color: #9ca3af; /* gray-400 */
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #374151; /* gray-700 */
+  color: #e5e7eb; /* gray-200 */
+  transition: all 0.2s;
+}
+
+.socialLink:hover {
+  background-color: #38A169; /* plant-green */
+  transform: translateY(-3px);
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link {
+  color: #9ca3af; /* gray-400 */
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #38A169; /* plant-green */
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contactIcon {
+  color: #38A169; /* plant-green */
+  font-size: 1.125rem;
+}
+
+.copyright {
+  margin-top: 3rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #374151; /* gray-700 */
+  color: #9ca3af; /* gray-400 */
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}

@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Menu from "./components/Menu";
+import HowItWorks from "./components/HowItWorks";
+import Testimonials from "./components/Testimonials";
+import Footer from "./components/Footer";
+import CartSidebar from "./components/CartSidebar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  const toggleCart = () => {
+    setIsCartOpen(prevState => !prevState);
+  };
+
+  const addToCart = (item) => {
+    setCart(currentCart => {
+      const existingItem = currentCart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        return currentCart.map(cartItem => 
+          cartItem.id === item.id 
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      } else {
+        return [...currentCart, { ...item, quantity: 1 }];
+      }
+    });
+  };
+
+  const removeFromCart = (itemId) => {
+    setCart(currentCart => currentCart.filter(item => item.id !== itemId));
+  };
+
+  const updateQuantity = (itemId, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeFromCart(itemId);
+      return;
+    }
+    
+    setCart(currentCart => 
+      currentCart.map(item => 
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header cartItems={cart} toggleCart={toggleCart} />
+      <Hero />
+      <Menu addToCart={addToCart} />
+      <HowItWorks />
+      <Testimonials />
+      <Footer />
+      <CartSidebar 
+        isOpen={isCartOpen} 
+        close={() => setIsCartOpen(false)} 
+        cart={cart}
+        updateQuantity={updateQuantity}
+        removeFromCart={removeFromCart}
+      />
     </>
-  )
+  );
 }
 
 export default App
