@@ -72,6 +72,8 @@
 
 .searchInputWrapper {
   position: relative;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .searchInput {
@@ -105,6 +107,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem; /* gap-2 */
+  justify-content: center; /* Center on mobile */
+}
+
+@media (min-width: 768px) {
+  .categoryButtonsContainer {
+    justify-content: flex-start; /* Align left on desktop */
+  }
+
+  .searchInputWrapper {
+    margin-bottom: 0;
+  }
 }
 
 .categoryButton {
@@ -154,12 +167,13 @@
 .menuGrid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
-  gap: 2rem; /* gap-8 */
+  gap: 1.5rem; /* Reduced from 2rem for mobile */
 }
 
 @media (min-width: 768px) { /* md */
   .menuGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+    gap: 2rem; /* Original gap */
   }
 }
 
@@ -212,17 +226,29 @@
 
 .menuImage {
   width: 100%;
-  height: 12rem; /* h-48 */
+  height: 10rem; /* Reduced from 12rem for mobile */
   object-fit: cover;
   transition: transform 0.5s ease-in-out;
   border-bottom: 2px solid rgba(217, 47, 42, 0.1); /* Subtle red border at bottom of image */
 }
 
+@media (min-width: 640px) {
+  .menuImage {
+    height: 12rem; /* Original height for larger screens */
+  }
+}
+
 .menuContent {
-  padding: 1.5rem; /* p-6 */
+  padding: 1rem; /* Reduced from 1.5rem for mobile */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .menuContent {
+    padding: 1.5rem; /* Original padding */
+  }
 }
 
 .menuItemHeader {
@@ -263,9 +289,9 @@
 
 .addButton {
   width: auto;
-  min-width: 180px;
+  min-width: 120px; /* Reduced from 180px for better mobile display */
   margin: 0 auto; /* Center the button */
-  padding: 0.75rem 1.5rem; /* Increased padding for better proportions */
+  padding: 0.5rem 1rem; /* Reduced padding for mobile */
   background-color: rgba(217, 47, 42, 0.85); /* Slightly transparent for glass effect */
   backdrop-filter: blur(5px); /* Glass effect */
   -webkit-backdrop-filter: blur(5px); /* For Safari support */
@@ -281,61 +307,71 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  column-gap: 10px;
 }
 
-.addButton:hover {
-  background-color: rgba(217, 47, 42, 0.9); /* Slightly more opaque on hover */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
-  transform: translateY(-2px);
-  border: 1px solid rgba(255, 255, 255, 0.25); /* More visible border on hover */
+@media (max-width: 639px) {
+  .addButton {
+    min-width: 100px; /* Further reduced for smaller screens */
+    font-size: 0.9rem; /* Smaller font size for mobile */
+    padding: 0.4rem 0.8rem; /* Reduced padding for mobile */
+  }
 }
 
-.addButton:active {
-  transform: translateY(1px); /* Button press effect */
-  background-color: rgba(217, 47, 42, 0.75);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+@media (min-width: 640px) {
+  .addButton {
+    min-width: 150px;
+    padding: 0.75rem 1.5rem; /* Original padding for larger screens */
+  }
 }
 
-/* Add ripple effect */
-.addButton::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
+/* Add a small touch-specific media query for touch devices */
+@media (hover: none) {
+  .addButton {
+    background-color: rgba(217, 47, 42, 0.9); /* More visible on touch devices by default */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* Slightly enhanced shadow for visibility */
+  }
+  
+  /* Increase touch target size slightly */
+  .menuItem {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Ensure filter buttons have good touch size */
+  .categoryButton {
+    padding: 0.6rem 1rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.addButton:active::after {
-  transform: scale(0, 0);
-  opacity: 0.3;
-  transition: 0s;
-}
-
-.addButtonIcon {
-  margin-right: 0.5rem; /* mr-2 */
-}
-
-.noItemsMessageContainer {
-  grid-column: 1 / -1; /* col-span-full */
-  text-align: center;
-  padding-top: 2rem; /* py-8 */
-  padding-bottom: 2rem; /* py-8 */
-}
-
-.noItemsMessageText {
-  color: #6b7280; /* text-gray-500 */
-  font-size: 1.125rem; /* text-lg */
-  line-height: 1.75rem;
-  padding: 2rem;
-  border: 1px dashed #d1d5db; /* dashed border */
-  border-radius: 0.75rem;
-  display: inline-block;
+/* Extra small screens adjustments */
+@media (max-width: 380px) {
+  .menuItemTitle {
+    font-size: 1.1rem;
+  }
+  
+  .menuItemPrice {
+    font-size: 1rem;
+  }
+  
+  .menuItemDescription {
+    font-size: 0.8rem;
+  }
+  
+  .addButton {
+    min-width: 100px;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.6rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 0.9rem;
+  }
 }

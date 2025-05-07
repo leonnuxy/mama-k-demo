@@ -1,28 +1,45 @@
-/* HowItWorks component styles */
+/* How It Works component styles with mobile responsiveness */
+
+/* Base section styling */
 .howItWorksSection {
-  padding-top: 4rem; /* py-16 */
-  padding-bottom: 4rem; /* py-16 */
+  padding: 3rem 1rem; /* Default padding for mobile */
   background-color: white;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Background decorative element */
+.howItWorksSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(23, 147, 138, 0.03); /* Very light teal accent */
+  z-index: 0;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Container for max width */
 .container {
-  max-width: 1280px; /* container */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem; /* px-4 */
-  padding-right: 1rem; /* px-4 */
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
+/* Section header styling */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 3rem; /* mb-12 */
+  margin-bottom: 2.5rem; /* Spacing for mobile */
 }
 
 .sectionTitle {
-  font-size: 1.875rem; /* text-3xl */
-  line-height: 2.25rem;
-  font-weight: 700; /* font-bold */
-  color: #111827; /* text-gray-900 */
+  font-size: 1.875rem; /* Smaller for mobile */
+  line-height: 1.2;
+  font-weight: 700;
+  color: #111827;
   position: relative;
   display: inline-block;
 }
@@ -37,187 +54,318 @@
   border-radius: 2px;
 }
 
-@media (min-width: 768px) { /* md */
-  .sectionTitle {
-    font-size: 2.25rem; /* md:text-4xl */
-    line-height: 2.5rem;
-  }
-}
-
 .sectionSubtitle {
-  margin-top: 1rem; /* mt-4 */
-  color: #4b5563; /* text-gray-600 */
-  max-width: 42rem; /* max-w-2xl */
+  margin-top: 1rem;
+  color: #4b5563;
+  font-size: 0.95rem; /* Smaller for mobile */
+  line-height: 1.6;
+  max-width: 90%; /* Width limit on mobile */
   margin-left: auto;
   margin-right: auto;
 }
 
-.stepsGrid {
+/* Steps container - adapts across breakpoints */
+.stepsContainer {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
-  gap: 2rem; /* gap-8 */
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 2rem; /* Spacing between steps for mobile */
+  margin-bottom: 3rem;
 }
 
-@media (min-width: 768px) { /* md */
-  .stepsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
-  }
-}
-
-@media (min-width: 1024px) { /* lg */
-  .stepsGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)); /* lg:grid-cols-4 */
-  }
-}
-
+/* Step card styling */
 .stepCard {
-  text-align: center;
-  position: relative; /* For the connecting line */
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Stacked layout for mobile */
+  align-items: center;
+  text-align: center; /* Center text on mobile */
+  background-color: white;
   border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  background-color: transparent;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards;
+  position: relative;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stepCard:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.stepIconWrapper {
-  width: 4rem; /* w-16 */
-  height: 4rem; /* h-16 */
-  background-color: rgba(217, 47, 42, 0.1); /* Lighter Red Accent for icon background */
-  border-radius: 9999px; /* rounded-full */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-red-accent); /* Red Accent for icon */
-  font-size: 1.5rem; /* text-2xl */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem; /* mb-4 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stepCard:hover .stepIconWrapper {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(217, 47, 42, 0.1);
-}
-
-.stepNumberContainer {
+/* Step number and icon styling */
+.stepIconContainer {
   position: relative;
-  margin-bottom: 1.5rem; /* mb-6 */
-  display: flex;
-  justify-content: center;
-  align-items: center; /* To center the number if the line is present */
+  margin-bottom: 1.5rem;
 }
 
 .stepNumber {
-  width: 2rem; /* w-8 */
-  height: 2rem; /* h-8 */
-  border-radius: 9999px; /* rounded-full */
-  background-color: var(--primary-red-accent); /* Red Accent */
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--primary-red-accent);
   color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700; /* font-bold */
-  z-index: 1; /* Ensure number is above the line */
-  box-shadow: 0 4px 10px rgba(217, 47, 42, 0.2); /* Subtle shadow for depth */
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(217, 47, 42, 0.25);
+  z-index: 1;
 }
 
-.stepConnector {
-  display: none; /* hidden by default */
+.iconCircle {
+  width: 4.5rem; /* Good size for mobile */
+  height: 4.5rem;
+  border-radius: 50%;
+  background-color: rgba(23, 147, 138, 0.1); /* Light teal background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-@media (min-width: 1024px) { /* lg */
-  .stepConnector {
-    display: block; /* lg:block */
-    position: absolute;
-    top: 50%; /* Aligns with the middle of the stepNumber */
-    left: 50%; /* Center of current step */
-    width: 100%; /* Full width between steps */
-    height: 2px; /* h-0.5 */
-    background-color: var(--teal-accent); /* Teal accent for connector */
-    transform: translateY(-50%);
-    z-index: 0; /* Behind the stepNumber */
-  }
-  /* Remove connector from the last step */
-  .stepCard:last-child .stepConnector {
-    display: none;
-  }
+.stepCard:hover .iconCircle {
+  background-color: var(--teal-accent);
+}
+
+.stepIcon {
+  font-size: 1.75rem; /* Good size for mobile */
+  color: var(--teal-accent);
+  transition: all 0.3s ease;
+}
+
+.stepCard:hover .stepIcon {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Step content styling */
+.stepContent {
+  width: 100%;
 }
 
 .stepTitle {
-  font-size: 1.25rem; /* text-xl */
-  line-height: 1.75rem;
-  font-weight: 600; /* font-semibold */
-  margin-bottom: 0.5rem; /* mb-2 */
-  color: #111827; /* text-gray-900 */
-  transition: color 0.3s ease;
-}
-
-.stepCard:hover .stepTitle {
-  color: var(--primary-red-accent); /* Red accent on hover */
+  font-size: 1.25rem; /* Good size for mobile */
+  color: #111827;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .stepDescription {
-  color: #4b5563; /* text-gray-600 */
-  font-size: 0.875rem; /* text-sm or default */
-  line-height: 1.25rem;
+  color: #6b7280;
+  font-size: 0.875rem; /* Smaller for mobile */
+  line-height: 1.6;
 }
 
-.ctaButtonContainer {
-  margin-top: 3rem; /* mt-12 */
+/* Call to action styling */
+.callToAction {
   text-align: center;
+  padding: 2rem 1rem;
+  background-color: rgba(23, 147, 138, 0.06);
+  border-radius: 1rem;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.ctaText {
+  font-size: 1.125rem; /* Good size for mobile */
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1.5rem;
 }
 
 .ctaButton {
   display: inline-block;
-  background-color: rgba(217, 47, 42, 0.8); /* Slightly transparent for glass effect */
-  backdrop-filter: blur(5px); /* Glass effect */
-  -webkit-backdrop-filter: blur(5px); /* For Safari support */
+  background-color: var(--primary-red-accent);
   color: white;
-  font-weight: 500; /* font-medium */
-  padding: 0.75rem 2rem; /* Wider padding for better proportions */
-  border-radius: 9999px; /* Fully rounded like the menu button */
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  text-decoration: none; /* if it's an <a> tag */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle white border for glass effect */
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  text-decoration: none;
 }
 
 .ctaButton:hover {
-  background-color: rgba(217, 47, 42, 0.9); /* Slightly more opaque on hover */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  background-color: #c12e24; /* Slightly darker red */
   transform: translateY(-2px);
-  border: 1px solid rgba(255, 255, 255, 0.25); /* More visible border on hover */
+  box-shadow: 0 4px 12px rgba(217, 47, 42, 0.2);
 }
 
-.ctaButton:active {
-  transform: translateY(1px); /* Button press effect */
-  background-color: rgba(217, 47, 42, 0.75);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+/* Tablet responsiveness */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .howItWorksSection {
+    padding: 4rem 2rem; /* More padding for tablet */
+  }
+  
+  .sectionTitle {
+    font-size: 2.25rem; /* Larger for tablet */
+  }
+  
+  .sectionSubtitle {
+    font-size: 1rem; /* Larger for tablet */
+    max-width: 80%; /* Width limit on tablet */
+  }
+  
+  .stepsContainer {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablet */
+    gap: 2rem 1.5rem; /* Row and column gap */
+  }
+  
+  .stepCard {
+    flex-direction: column; /* Keep stacked layout but with better spacing */
+  }
+  
+  .iconCircle {
+    width: 5rem; /* Slightly larger for tablet */
+    height: 5rem;
+  }
+  
+  .stepIcon {
+    font-size: 2rem; /* Slightly larger for tablet */
+  }
+  
+  .stepTitle {
+    font-size: 1.375rem; /* Larger for tablet */
+  }
+  
+  .stepDescription {
+    font-size: 0.9375rem; /* Larger for tablet */
+  }
+  
+  .callToAction {
+    padding: 2.5rem;
+    max-width: 80%;
+  }
+  
+  .ctaText {
+    font-size: 1.25rem; /* Larger for tablet */
+  }
 }
 
-/* Add ripple effect */
-.ctaButton::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
+/* Desktop responsiveness */
+@media (min-width: 1025px) {
+  .howItWorksSection {
+    padding: 5rem 2rem; /* Even more padding for desktop */
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem; /* Larger for desktop */
+  }
+  
+  .sectionSubtitle {
+    font-size: 1.125rem; /* Larger for desktop */
+    max-width: 60%; /* Width limit on desktop */
+  }
+  
+  .stepsContainer {
+    grid-template-columns: repeat(4, 1fr); /* Four columns for desktop */
+    gap: 2rem; /* Equal spacing */
+  }
+  
+  /* Connect step cards with a line for desktop */
+  .stepsContainer::before {
+    content: '';
+    position: absolute;
+    top: 5.25rem; /* Align with icon centers */
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--teal-accent), var(--teal-accent) 8px, transparent 8px, transparent 16px);
+    z-index: -1;
+  }
+  
+  .stepCard {
+    flex-direction: column; /* Keep stacked for consistency */
+    padding: 2rem;
+  }
+  
+  .iconCircle {
+    width: 6rem; /* Larger for desktop */
+    height: 6rem;
+  }
+  
+  .stepIcon {
+    font-size: 2.25rem; /* Larger for desktop */
+  }
+  
+  .stepTitle {
+    font-size: 1.5rem; /* Larger for desktop */
+    margin-bottom: 0.75rem;
+  }
+  
+  .stepDescription {
+    font-size: 1rem; /* Larger for desktop */
+    line-height: 1.7;
+  }
+  
+  .callToAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 4rem;
+    max-width: 90%;
+    text-align: left;
+  }
+  
+  .ctaText {
+    font-size: 1.5rem; /* Larger for desktop */
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+  
+  .ctaButton {
+    padding: 0.85rem 2.5rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Very small screens adjustment (under 375px) */
+@media (max-width: 374px) {
+  .sectionTitle {
+    font-size: 1.625rem;
+  }
+  
+  .stepTitle {
+    font-size: 1.125rem;
+  }
+  
+  .iconCircle {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  .stepIcon {
+    font-size: 1.5rem;
+  }
+  
+  .callToAction {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .ctaText {
+    font-size: 1rem;
+  }
+  
+  .ctaButton {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
+  }
 }

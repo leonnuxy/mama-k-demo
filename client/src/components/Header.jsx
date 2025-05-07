@@ -52,80 +52,106 @@ export default function Header({ cartItemCount, toggleCart }) {
   }, [isMobileMenuOpen]);
 
   return (
-    <header className={combineClasses(
-      styles.headerBase,
-      isScrolled && styles.headerScrolled
-    )}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <div className={styles.logoIcon}>
-            <img src={mamaKLogo} alt="Mama K's Kitchen Logo" className={styles.logoImage} />
-          </div>
-          <h1 className={styles.brandName}>
-            Mama K's <span className={styles.brandHighlight}>Kitchen</span>
-          </h1>
-        </div>
-
-        <nav className={styles.nav}>
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={styles.navLink}
-            >
-              <i className={`${link.icon} ${styles.navLinkIcon}`}></i>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className={styles.controlsContainer}>
-          <button 
-            onClick={toggleCart}
-            className={`${styles.cartButton} ${styles.navLink}`}
-            aria-label="Cart"
-          >
-            <i className={`fas fa-shopping-cart ${styles.cartIcon}`}></i>
-            {cartItemCount > 0 && (
-              <span className={styles.cartBadge}>
-                {cartItemCount}
-              </span>
-            )}
-          </button>
-          
-          <button 
-            className={combineClasses(
-              styles.mobileMenuButton, 
-              styles.navLink,
-              isMobileMenuOpen && styles.active
-            )}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMobileMenuOpen}
-          >
-            <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-          </button>
-        </div>
-      </div>
-      
-      <div className={combineClasses(
-        styles.mobileMenu,
-        isMobileMenuOpen && styles.mobileMenuOpen
+    <>
+      <header className={combineClasses(
+        styles.headerBase,
+        isScrolled && styles.headerScrolled
       )}>
-        <nav className={styles.mobileNav}>
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={styles.mobileMenuItem}
-              onClick={() => setIsMobileMenuOpen(false)}
+        <div className={styles.container}>
+          <div className={styles.logo}>
+            <div className={styles.logoIcon}>
+              <img src={mamaKLogo} alt="Mama K's Kitchen Logo" className={styles.logoImage} />
+            </div>
+            <h1 className={styles.brandName}>
+              Mama K's <span className={styles.brandHighlight}>Kitchen</span>
+            </h1>
+          </div>
+
+          <nav className={styles.nav}>
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className={styles.navLink}
+              >
+                <i className={`${link.icon} ${styles.navLinkIcon}`}></i>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className={styles.controlsContainer}>
+            <button 
+              onClick={toggleCart}
+              className={`${styles.cartButton} ${styles.navLink}`}
+              aria-label="Cart"
             >
-              <i className={`${link.icon} ${styles.navLinkIcon}`}></i>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </div>
-    </header>
+              <i className={`fas fa-shopping-cart ${styles.cartIcon}`}></i>
+              {cartItemCount > 0 && (
+                <span className={styles.cartBadge}>
+                  {cartItemCount}
+                </span>
+              )}
+            </button>
+            
+            <button 
+              className={combineClasses(
+                styles.mobileMenuButton, 
+                isMobileMenuOpen && styles.active // Remove navLink class to avoid conflicts
+              )}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <div className={styles.hamburger}>
+                <span className={combineClasses(styles.line, isMobileMenuOpen && styles.active)}></span>
+                <span className={combineClasses(styles.line, isMobileMenuOpen && styles.active)}></span>
+                <span className={combineClasses(styles.line, isMobileMenuOpen && styles.active)}></span>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <div className={combineClasses(
+          styles.mobileMenu,
+          isMobileMenuOpen && styles.mobileMenuOpen
+        )}>
+          <nav className={styles.mobileNav}>
+            {navLinks.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className={styles.mobileMenuItem}
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{ 
+                  transitionDelay: isMobileMenuOpen ? `${index * 75}ms` : '0ms',
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  transform: isMobileMenuOpen 
+                    ? 'translateX(0)' 
+                    : 'translateX(-20px)'
+                }}
+              >
+                <i className={`${link.icon} ${styles.navLinkIcon}`}></i>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </header>
+      
+      {/* Floating Cart Button for Mobile - Moved outside header */}
+      <button 
+        onClick={toggleCart}
+        className={styles.floatingCartButton}
+        aria-label="Shopping Cart"
+      >
+        <i className="fas fa-shopping-cart"></i>
+        {cartItemCount > 0 && (
+          <span className={styles.floatingCartBadge}>
+            {cartItemCount}
+          </span>
+        )}
+      </button>
+    </>
   );
 }

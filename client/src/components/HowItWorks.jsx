@@ -1,70 +1,72 @@
+import React from 'react';
 import styles from '../styles/HowItWorks.module.css';
+import { combineClasses } from '../utils/styleUtils';
 
 export default function HowItWorks() {
   const steps = [
     {
       id: 1,
       title: "Browse Our Menu",
-      description: "Explore our variety of authentic Nigerian dishes prepared with traditional recipes and fresh ingredients.",
-      icon: "fa-utensils"
+      description: "Explore our diverse selection of authentic Nigerian dishes prepared with love and tradition.",
+      icon: "fas fa-utensils"
     },
     {
       id: 2,
-      title: "Place Your Order",
-      description: "Select your favorite meals, customize as needed, and add them to your cart for easy checkout.",
-      icon: "fa-cart-shopping"
+      title: "Customize Your Order",
+      description: "Select your preferred dishes, specify any dietary requirements, and choose your portions.",
+      icon: "fas fa-edit"
     },
     {
       id: 3,
-      title: "Schedule Delivery/Pickup",
-      description: "Choose a convenient time for delivery or pickup. We ensure your meals are prepared fresh and on time.",
-      icon: "fa-calendar-alt" // Changed from fa-calendar for better visual
+      title: "Schedule Delivery",
+      description: "Choose a convenient delivery date and time for your freshly prepared meals.",
+      icon: "fas fa-calendar-alt"
     },
     {
       id: 4,
       title: "Enjoy Your Meal",
-      description: "Receive your freshly prepared Nigerian meal, ready to heat and enjoy in the comfort of your home.",
-      icon: "fa-smile-beam" // Changed from fa-face-smile for better visual
+      description: "Receive your delicious food and experience the rich flavors of Nigerian cuisine at home.",
+      icon: "fas fa-heart"
     }
   ];
-  
+
   return (
     <section id="how-it-works" className={styles.howItWorksSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>How It Works</h2>
           <p className={styles.sectionSubtitle}>
-            Bringing authentic Nigerian flavors to your doorstep in four simple steps.
+            Getting your favorite Nigerian dishes from Mama K's Kitchen is simple. Follow these easy steps to enjoy authentic flavors delivered to your doorstep.
           </p>
         </div>
         
-        <div className={styles.stepsGrid}>
+        <div className={styles.stepsContainer}>
           {steps.map((step, index) => (
-            <div key={step.id} className={styles.stepCard}>
-              <div className={styles.stepIconWrapper}>
-                <i className={`fas ${step.icon}`}></i>
+            <div 
+              key={step.id} 
+              className={styles.stepCard}
+              style={{ 
+                animationDelay: `${index * 150}ms`,
+              }}
+            >
+              <div className={styles.stepIconContainer}>
+                <div className={styles.stepNumber}>{step.id}</div>
+                <div className={styles.iconCircle}>
+                  <i className={`${step.icon} ${styles.stepIcon}`}></i>
+                </div>
               </div>
-              <div className={styles.stepNumberContainer}>
-                <span className={styles.stepNumber}>
-                  {step.id}
-                </span>
-                {/* Render connector line only for lg screens and not for the last item */}
-                {index < steps.length - 1 && (
-                  <div className={styles.stepConnector}></div>
-                )}
+              
+              <div className={styles.stepContent}>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDescription}>{step.description}</p>
               </div>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDescription}>{step.description}</p>
             </div>
           ))}
         </div>
         
-        <div className={styles.ctaButtonContainer}>
-          <a 
-            href="#menu" 
-            className={styles.ctaButton}
-          >
-            <i className="fas fa-utensils" style={{marginRight: '0.5rem'}}></i>
+        <div className={styles.callToAction}>
+          <p className={styles.ctaText}>Ready to experience the authentic taste of Nigeria?</p>
+          <a href="#menu" className={styles.ctaButton}>
             Order Now
           </a>
         </div>

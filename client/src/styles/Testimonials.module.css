@@ -197,3 +197,41 @@
   display: flex;
   align-items: center;
 }
+/* Wrap the slider so we can tweak mobile padding/overflow */
+.slider {
+  margin: 0 -1rem;        /* bleed slides to edges on mobile */
+  padding: 0 1rem;
+}
+
+/* Hide original grid rules */
+.testimonialsGrid { display: none; }
+
+/* Keep cards’ styles as you had them… */
+.testimonialCard { /* same as before */ 
+  background-color: white;
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 4px 15px rgba(17, 12, 46, 0.08); /* Modern soft shadow */
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+
+}
+
+/* Mobile / tablet: ensure full‐width cards */
+@media (max-width: 767px) {
+  .testimonialCard {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+}
+
+/* Desktop: show grid instead of carousel */
+@media (min-width: 768px) {
+  .slider { display: none; }
+  .testimonialsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
